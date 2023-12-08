@@ -18,7 +18,7 @@ export class Human extends Model {
 Human.init(
   {
     humanId: {
-      type: DataTypes.integer,
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
@@ -35,6 +35,8 @@ Human.init(
       type: DataTypes.STRING,
       allowNull:false
     }
+  },  {
+    sequelize: db
   }
 )
 
@@ -47,7 +49,7 @@ export class Animal extends Model {
 Animal.init(
   {
     animalId: {
-      type: DataTypes.integer,
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
@@ -63,13 +65,15 @@ Animal.init(
     birthYear: {
       type: DataTypes.INTEGER
     }
+  }, {
+    sequelize: db
   }
 )
 
 // Define Relationship
 Human.hasMany(Animal, {foreignKey: 'humanId'})
-Animal.belongTo(Human, {foreignKey: 'humanId'})
+Animal.belongsTo(Human, {foreignKey: 'humanId'})
 
 db.sync({force: true})
 
-export default {Human, Animal};
+export default db
