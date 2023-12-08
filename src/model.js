@@ -69,4 +69,4 @@ Animal.init(
 Human.hasMany(Animal, {foreignKey: 'humanId'})
 Animal.belongTo(Human, {foreignKey: 'humanId'})
 
-export default db;
+export default {Human, Animal};
