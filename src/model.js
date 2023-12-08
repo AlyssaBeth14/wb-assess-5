@@ -4,6 +4,7 @@ import connectToDB from './db.js';
 
 const db = await connectToDB('postgresql:///animals');
 
+
 export class Human extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
@@ -68,5 +69,7 @@ Animal.init(
 // Define Relationship
 Human.hasMany(Animal, {foreignKey: 'humanId'})
 Animal.belongTo(Human, {foreignKey: 'humanId'})
+
+db.sync({force: true})
 
 export default {Human, Animal};
