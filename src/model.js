@@ -74,6 +74,6 @@ Animal.init(
 Human.hasMany(Animal, {foreignKey: 'humanId'})
 Animal.belongsTo(Human, {foreignKey: 'humanId'})
 
-db.sync({force: true})
+db.sync()
 
 export default db
