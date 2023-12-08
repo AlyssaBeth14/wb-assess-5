@@ -11,9 +11,9 @@ export class Human extends Model {
   }
 
   async getFullName() {
-  await Human.findAll({
+  return forEach(await Human.findAll({
   attributes: ['fname', 'lname']
- })
+ }))
   }
 }
 
