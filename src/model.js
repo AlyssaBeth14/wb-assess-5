@@ -10,8 +10,10 @@ export class Human extends Model {
     return this.toJSON();
   }
 
-  getFullName() {
-  //TODO
+  async getFullName() {
+  await Human.findAll({
+  attributes: ['fname', 'lname']
+ })
   }
 }
 
